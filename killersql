@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+#while true
+#do
+
+
+host=""
+password=""
+user=""
+port=""
+
+wanttime=$1
+
+
+listsqlrequest(){
+    resultat=`mysql -u "$user" -p"$password" -h "$host" -P "$port" -e "select concat('KILL ',id,';') from information_schema.processlist where INFO like 'SELECT%' AND TIME >='$wanttime';"`
+
+    return 0
+}
+
+
+killrequest(){
+    kill=$(echo $resultat | cut -c 24-)
+    echo $kill 
+    return 0
+}
+
+
+killcom(){
+    if [[ "$kill" == *KILL* ]]
+    then `mysql -u "$user" -p"$password" -h "$host" -P "$port" -e "$kill"`
+    else echo "Aucune requête trouvé avec le temps maximal indiqué : $wanttime seconde(s)"
+    fi
+
+}
+
+
+if [[ $wanttime -ge 1 ]]
+    then listsqlrequest && killrequest && killcom
+        elif [ "$wanttime" = "" ]
+        then echo "Script de kill de SELECT en fonction du temps indiqué en paramètre" && echo "(killersql 2 -> pour toutes les requêtes SELECT supérieur ou égal à 2 secondes)." 
+    else echo "Merci de rentrer un temps d'execution (en seconde) valide"
+fi
+
+#done
