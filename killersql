@@ -29,7 +29,7 @@ killrequest(){
 
 killcom(){
     if [[ "$kill" == *KILL* ]]
-    then `mysql -u "$user" -p"$password" -h "$host" -P "$port" -e "$kill"`
+    then mysql -u "$user" -p"$password" -h "$host" -P "$port" -e "$kill"
     else echo "Aucune requête trouvé avec le temps maximal indiqué : $wanttime seconde(s)"
     fi
 
