@@ -1,4 +1,4 @@
-# 🗡️ killersql — Tueur de requêtes SQL longues
+# 🗡️ killersql - Tueur de requêtes SQL longues
 
 ![Bash](https://img.shields.io/badge/Bash-5%2B-informational?style=for-the-badge)
 ![MySQL](https://img.shields.io/badge/MySQL-MariaDB-4479A1?style=for-the-badge)
@@ -83,8 +83,8 @@ Vérification toutes les minutes :
 ## Exemple de log
 
 ```
-[2024-01-15 14:32:01] KILL — ID:1542 | User: app_user | Durée: 187s | Query: SELECT * FROM big_table WHERE...
-[2024-01-15 16:10:44] KILL — ID:1687 | User: reporting | Durée: 210s | Query: SELECT COUNT(*) FROM logs...
+[2024-01-15 14:32:01] KILL - ID:1542 | User: app_user | Durée: 187s | Query: SELECT * FROM big_table WHERE...
+[2024-01-15 16:10:44] KILL - ID:1687 | User: reporting | Durée: 210s | Query: SELECT COUNT(*) FROM logs...
 ```
 
 ---
